@@ -1,4 +1,4 @@
-var {Student,Teacher,Dean,ProDean,Administrator,DepartmentHead} = require('./class_v1_class.js');
+var {Student,Teacher,Dean,ProDean,Administrator,DepartmentHead} = require('./class_v2_proto.js');
 
 idS = 1;
 idT = 2;

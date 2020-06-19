@@ -1,11 +1,5 @@
 const fetch = require("node-fetch");
 
-// module.exports.studIns = (Studt) => {
-//
-// }
-//
-// module.exports.studUpd = (id) => ()
-
 module.exports.studReq = (id) => {
   return fetch('http://localhost:3000/getstudent/' + id).then(stud => {
     return stud.json();
