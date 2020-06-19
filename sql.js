@@ -17,9 +17,34 @@ con.on('error', function(err) {
   console.log("[mysql error]",err);
 });
 
+app.get('/updateStudent/:id/:grade', (req, res) => {
+  let id = req.params.id;
+  let grade = req.params.grade;
+  let sql = 'UPDATE student SET grade = ' + grade + 'WHERE id = ' + id;
+  let query = con.query(sql, (err, result) => {
+    res.send('Grade updated!');
+  })
+})
 
+app.get('/updateEmployee/:id/:fired', (req, res) => {
+  let id = req.params.id;
+  let fired = req.params.fired;
+  let sql = 'UPDATE teacher SET fire = ' + fired + 'WHERE id = ' + id;
+  let query = con.query(sql, (err, result) => {
+    res.send('Employee fired!');
+  })
+})
 
-app.get('/getstudent/:id', (req, res) => {
+app.get('/updateProjects/:id/:proj', (req, res) => {
+  let id = req.params.id;
+  let proj = req.params.proj;
+  let sql = 'UPDATE prodean SET nrActiveProjects = ' + proj + 'WHERE id = ' + id;
+  let query = con.query(sql, (err, result) => {
+    res.send('No projects updated!');
+  })
+})
+
+app.get('/getStudent/:id', (req, res) => {
   let id = req.params.id;
   let sql = 'SELECT * from student WHERE id = ' + id;
   let query = con.query(sql, (err, results) => {

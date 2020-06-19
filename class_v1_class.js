@@ -1,6 +1,6 @@
 'use strict';
 
-var {studReq,teachReq,proReq,adminReq,deanReq,depReq} = require('./fetches.js');
+var {studUpd, studReq,teachReq,proReq,adminReq,deanReq,depReq} = require('./fetches.js');
 
 class Person {
   constructor(id, birthDate, name) {
@@ -21,6 +21,10 @@ class Person {
     const date = new Date();
 		return Math.floor(Math.abs(date - Date.parse(this._birthDate)) / (1000*60*60*24*365));
 	}
+
+  get Id() {
+    return this._id;
+  }
 
 }
 

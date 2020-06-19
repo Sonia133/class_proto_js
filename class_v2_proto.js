@@ -1,6 +1,6 @@
 'use strict';
 
-var {studReq,teachReq,proReq,adminReq,deanReq,depReq} = require('./fetches.js');
+var {projUpd, empUpd, studUpd, studReq,teachReq,proReq,adminReq,deanReq,depReq} = require('./fetches.js');
 
 var Person = function(id, birthDate, name) {
   this.id = id;
@@ -42,7 +42,10 @@ var Employee = function(id, birthDate, name, salary, fire=false) {
   }
 
   this.setFire = function(value) {
-    this.fire = value;
+    id = this.id;
+    return empUpd(id, value).then(message => {
+      return message;
+    })
   }
 
   this.promote = function(salary) {
@@ -124,6 +127,10 @@ var ProDean = function(id, birthDate, name, salary, fire, nrActiveProjects) {
 
   this.setNrActiveProjects = function(proj) {
     this.nrActiveProjects = proj;
+    id = this.id;
+    return projUpd(id, proj).then(message => {
+      return message;
+    })
   }
 
   this.projectDone = function() {
@@ -171,7 +178,10 @@ var Student = function(id, birthDate, name, grade = 0) {
   }
 
   this.setGrade = function(grade) {
-    this.grade = grade;
+    id = this.id;
+    return studUpd(id, grade).then(message => {
+      return message;
+    })
   }
 
   this.pass = function() {
